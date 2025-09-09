@@ -3,12 +3,12 @@ const ErrorHandler = require("../../utils/errorHandler.js")
 const router = express.Router();
 const axios = require("axios");
 const catchAsyncErrors = require("../../middleware/catchAsyncErrors.js");
-const User = require('../../models/userModel.js');
+// const User = require('../../models/userModel.js');
 
-const newUser = new User({
-  email: 'test@example.com',
-  password: 'hashedpassword', // Debes encriptarla antes de guardar
-});
+// const newUser = new User({
+//   email: 'test@example.com',
+//   password: 'hashedpassword', // Debes encriptarla antes de guardar
+// });
 
 //routes -> /user/
 router.get( 

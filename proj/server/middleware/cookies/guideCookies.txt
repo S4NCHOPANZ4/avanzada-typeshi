@@ -1,0 +1,5 @@
+ ├── cookies/
+ │   ├── setCookie.js       
+ │   ├── getCookie.js       
+ └── clearCookie.js    
+ └── auth.js                

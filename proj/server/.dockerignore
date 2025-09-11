@@ -1,0 +1,27 @@
+# Dependencias
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Archivos de configuración innecesarios en la imagen
+Dockerfile
+.dockerignore
+
+# Carpetas de build/compilación
+dist
+build
+.cache
+
+# Archivos de entorno (los manejarás con variables en docker-compose)
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

@@ -1,18 +1,42 @@
 version: "3.8"
+
 services:
-  mariadb:
-    image: mariadb:latest
-    container_name: mariadb
+  db:
+    image: mariadb:11.4
+    container_name: mariadb_container
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: mi_clave_segura
-      MYSQL_DATABASE: mi_base
-      MYSQL_USER: mi_usuario
-      MYSQL_PASSWORD: mi_pass
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
     ports:
-      - "3306:3306"
+      - "3333:3306"
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: ./server
+    container_name: backend_container
+    restart: always
+    ports:
+      - "3030:3030"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+      DB_NAME: mydb
+
+  frontend:
+    build: ./client
+    container_name: frontend_container
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
 
 volumes:
-  mariadb_data:
+  db_data:
